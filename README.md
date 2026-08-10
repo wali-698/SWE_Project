@@ -34,6 +34,21 @@ File path: `Expence Tracker (APP)/android/app-release.apk`
 
 Note: When installing the APK on an Android device, you may need to allow installations from unknown sources and verify the app before installing.
 
+## APK install troubleshooting
+
+If Android reports "App not installed":
+
+- Uninstall any existing version of the app before installing again.
+- Enable installation from unknown sources in your device settings.
+- Copy the APK to your device storage and use a file manager to install it.
+- If possible, install via `adb` for more detailed error output:
+
+```bash
+adb install -r "Expence Tracker (APP)/android/app-release.apk"
+```
+
+`adb` will show errors such as `INSTALL_FAILED_INCONSISTENT_CERTIFICATES`, `INSTALL_FAILED_VERSION_DOWNGRADE`, or `INSTALL_PARSE_FAILED_NO_CERTIFICATES` if there is a problem.
+
 ## Notes & Next steps
 
 - If transactions disappear after refresh, run the app via HTTP server (see above) and check browser console for errors.
