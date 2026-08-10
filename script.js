@@ -13,6 +13,50 @@ function saveTransactions() {
     }
 }
 
+// Category lists for each type
+const incomeCategories = [
+    "Salary",
+    "Business",
+    "Investment",
+    "Gift",
+    "Other"
+];
+
+const expenseCategories = [
+    "Food",
+    "Transport",
+    "Education",
+    "Shopping",
+    "Bills",
+    "Entertainment",
+    "Others"
+];
+
+function populateCategories(type) {
+    const sel = document.getElementById("category");
+    if (!sel) return;
+    sel.innerHTML = "";
+
+    const list = type === "income" ? incomeCategories : expenseCategories;
+
+    list.forEach(function(cat) {
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.textContent = cat;
+        sel.appendChild(opt);
+    });
+}
+
+// update categories when type changes
+const typeSelect = document.getElementById("type");
+if (typeSelect) {
+    typeSelect.addEventListener("change", function(e) {
+        populateCategories(e.target.value);
+    });
+    // populate initial categories based on default type
+    populateCategories(typeSelect.value || "expense");
+}
+
 function loadTransactions() {
     try {
         if (typeof localStorage === "undefined") {
