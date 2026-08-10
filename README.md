@@ -22,11 +22,15 @@ python3 -m http.server 8000
 
 ## Android App
 
-A built Android package (APK) is included in the repository. Click the link below to open or download the APK file:
+A built Android package (APK) is included in the repository. Click the button below to download the APK file directly:
 
-[Download Android App (APK)](./Expence%20Tracker%20(APP)/android/app-release.apk)
+<p>
+  <a href="./Expence%20Tracker%20(APP)/android/app-release.apk" download style="display:inline-block;padding:12px 14px;background:#1f6feb;color:#fff;border-radius:8px;text-decoration:none;">Download Android App (APK)</a>
+</p>
 
 File path: `Expence Tracker (APP)/android/app-release.apk`
+
+> Note: Some Markdown previewers or repository browsers may still open the file instead of downloading. If that happens, right-click the link and choose "Save link as..." or open the `Expence Tracker (APP)/android/app-release.apk` file directly.
 
 Note: When installing the APK on an Android device, you may need to allow installations from unknown sources and verify the app before installing.
 
