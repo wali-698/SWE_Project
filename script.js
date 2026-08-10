@@ -1,5 +1,44 @@
 let transactions = [];
 
+function saveTransactions() {
+    try {
+        if (typeof localStorage !== "undefined") {
+            localStorage.setItem("transactions", JSON.stringify(transactions));
+            console.log("transactions saved", transactions.length);
+        } else {
+            console.warn("localStorage not available: cannot save transactions");
+        }
+    } catch (e) {
+        console.error("Failed to save transactions to localStorage:", e);
+    }
+}
+
+function loadTransactions() {
+    try {
+        if (typeof localStorage === "undefined") {
+            console.warn("localStorage not available: starting with empty transactions");
+            transactions = [];
+            return;
+        }
+
+        const data = localStorage.getItem("transactions");
+        if (data) {
+            try {
+                transactions = JSON.parse(data) || [];
+                console.log("transactions loaded", transactions.length);
+            } catch (e) {
+                console.error("Failed to parse transactions from localStorage:", e);
+                transactions = [];
+            }
+        } else {
+            transactions = [];
+        }
+    } catch (e) {
+        console.error("Error reading from localStorage:", e);
+        transactions = [];
+    }
+}
+
 const form = document.getElementById("transactionForm");
 
 form.addEventListener("submit", function(event) {
@@ -22,6 +61,7 @@ form.addEventListener("submit", function(event) {
 
     transactions.push(transaction);
 
+    saveTransactions();
     showTransactions();
     updateSummary();
 
@@ -100,9 +140,13 @@ function updateSummary() {
 
 
 function deleteTransaction(index) {
-
     transactions.splice(index, 1);
-
+    saveTransactions();
     showTransactions();
     updateSummary();
 }
+
+// initialize from storage
+loadTransactions();
+showTransactions();
+updateSummary();
