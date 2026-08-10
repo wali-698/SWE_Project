@@ -20,6 +20,12 @@ python3 -m http.server 8000
 # then open http://localhost:8000 in your browser
 ```
 
+## Website
+
+The app is also hosted online at:
+
+[https://wali-698.github.io/SWE_Project/](https://wali-698.github.io/SWE_Project/)
+
 ## Android App
 
 A built Android package (APK) is available for download. Click the button below to download the APK directly from GitHub:
